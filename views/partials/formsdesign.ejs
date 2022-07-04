@@ -1,0 +1,66 @@
+<div class="form-group">
+  <label for="title">Title</label>
+  <input
+    required
+    value="<%= blog.title %>"
+    type="text"
+    name="title"
+    id="title"
+    class="form-control"
+  />
+</div>
+<div class="form-group">
+  <label for="author">author</label>
+  <input
+    required
+    value="<%= blog.author %>"
+    type="text"
+    name="author"
+    id="author"
+    class="form-control"
+  />
+</div>
+<div class="form-group">
+  <label for="img">img</label>
+  <input
+    required
+    value="<%= blog.img %>"
+    type="text"
+    name="img"
+   
+    id="img"
+    class="form-control"
+  />
+</div>
+
+
+<div class="form-group">
+  <label for="category">category</label>
+  <input
+    required
+    value="<%= blog.category %>"
+    type="text"
+    name="category"
+    id="category"
+    class="form-control"
+  />
+</div>
+
+<div class="form-group">
+  <label for="description">Short Description</label>
+  <textarea name="description" id="description" class="form-control"><%= blog.description %></textarea
+  >
+</div>
+<div class="form-group">
+  <label for="markdown">markdown</label> 
+  <textarea required name="markdown" id="markdown" class="form-control">
+    <% blog.markdown %>
+ 
+</textarea
+  >
+</div>
+
+<a href="/" class="btn btn-secondary m-3">Cancel</a>
+    
+
+<button type="submit" class="btn btn-primary m-3">Save</button>

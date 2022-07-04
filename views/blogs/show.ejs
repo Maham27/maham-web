@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/header") %>
+</head>
+<body >
+    <%- include("../partials/navbar") %>
+    <div class="container">
+        <div class="mt-4 p-5 bg-secondary text-white rounded text-center">
+            <h1 class="mb-4">FOOD BLOG</h1>
+          </div>
+    <div class="container">
+       <h1>Title:</h1>
+        <h1><%= blog.title%> </h1>
+        <h1>Author:</h1>
+        <h1><%= blog.author%> </h1>
+            <div class="text-muted mb-2">
+                <h1>Date:</h1>
+                <%= blog.createdAt.toLocaleDateString()%>
+              </div>
+
+              <div class="mb-3">
+                <h1>Image:</h1>
+                <img src="<%= blog.img %> " alt="" />
+              </div>
+              <h1>category:</h1>
+              <h1><%= blog.category%> </h1>
+              <h1>markdown:</h1>
+              <%- blog.sanitizedHtml %>
+              <a href="/" class="btn btn-secondary">Home</a>
+              <a href="/blogs/edit/<%= blog.id %>" class="btn btn-info">Edit</a>
+         
+        </div>
+
+</body>
+</html>

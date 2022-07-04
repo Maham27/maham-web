@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/header") %>
+</head>
+<body style="background-color: black">
+    <%- include("../partials/navbar") %>
+    <div class="container">
+        <div class="mt-4 p-5 bg-secondary text-white rounded text-center">
+            <h1 class="mb-4">FOOD BLOG</h1>
+            <a href="/blogs/new" class="btn btn-success center">Add New recepie</a>
+          </div>
+        <% blogs.forEach(blog =>
+        {%>
+          
+              <div class="card mt-4 text-center"  style="width: 42rem;">
+             <div class="card-body">
+                <h4 class="card-title"><%= blog.title %></h4>
+                <h4 class="card-title"><%= blog.author %></h4>
+                <div class="card-subtitle text-muted mb-2">
+                  <%= blog.createdAt.toLocaleDateString() %>
+                </div>
+                <div class="card-text mb-2"><%= blog.description %></div>
+                <img class="card-img-top mt-2" src="<%= blog.img %> " alt="" />
+                <div class="card-text mb-2"><%= blog.category %></div>
+                <a
+            href="blogs/<%= blog.slug %>"
+            class="btn btn-primary text-center"
+            >Read More....</a
+          >
+          <a href="blogs/edit/<%= blog.id %>" class="btn btn-info"
+            >Edit</a
+          >
+          <form
+            action="/blogs/<%= blog.id %>?_method=DELETE"
+            method="POST"
+            class="d-inline"
+>
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+            </div>
+            </div>
+
+       <% }) %>
+    </div>
+    
+</body>
+
+
