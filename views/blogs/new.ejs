@@ -3,18 +3,21 @@
 <head>
     <%- include("../partials/header") %>
 </head>
-<body style="background-color: black">
+<body style="background-image:url('/img/i.jpg'); background-repeat:no-repeat;background-size: 100% 100%;"">
     <%- include("../partials/navbar") %>
     <div class="container">
         <div class="mt-4 p-5 bg-secondary text-white rounded text-center">
-            <h1 class="mb-4">FOOD BLOG</h1>
+            <h1 class="mb-4">COOKING BLOG</h1>
           </div>
-          <div class="container text-center text-success">
-            <h1 class="mb-4">Add New Article</h1>
+          <div class="container text-center text-warning">
+            <h1 class="mb-4">Add New recipie</h1>
             <form action="/blogs" method="POST">
                 <%- include("../partials/formsdesign") %>
             </form>
     </div>
     </div>
+    <div class="py-5 text-center mt-4" style="background-color: black;color: white;">
+        ©2022 Copyright
+      </div>
     
 </body>

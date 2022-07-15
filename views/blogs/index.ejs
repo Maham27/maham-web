@@ -1,19 +1,21 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("../partials/header") %>
+  <%- include("../partials/header") %>
+
 </head>
-<body style="background-color: black">
+
+<body>
     <%- include("../partials/navbar") %>
     <div class="container">
-        <div class="mt-4 p-5 bg-secondary text-white rounded text-center">
-            <h1 class="mb-4">FOOD BLOG</h1>
-            <a href="/blogs/new" class="btn btn-success center">Add New recepie</a>
+        <div class="maham mt-4 p-5 text-white rounded text-center";>
+            <h1 class="mb-4">COOKING BLOG</h1>
+            <a href="/blogs/new" class="btn btn-success center p-4">Add New recepie</a>
           </div>
+          <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
         <% blogs.forEach(blog =>
         {%>
           
-              <div class="card mt-4 text-center"  style="width: 42rem;">
+              <div class="card mt-4 text-center"  style="width:28rem;margin:10px;">
              <div class="card-body">
                 <h4 class="card-title"><%= blog.title %></h4>
                 <h4 class="card-title"><%= blog.author %></h4>
@@ -25,10 +27,10 @@
                 <div class="card-text mb-2"><%= blog.category %></div>
                 <a
             href="blogs/<%= blog.slug %>"
-            class="btn btn-primary text-center"
+            class="btn btn-dark text-center"
             >Read More....</a
           >
-          <a href="blogs/edit/<%= blog.id %>" class="btn btn-info"
+          <a href="blogs/edit/<%= blog.id %>" class="btn btn-dark"
             >Edit</a
           >
           <form
@@ -42,8 +44,15 @@
             </div>
 
        <% }) %>
-    </div>
-    
+       
+          </div>
+      </div>
+      <div class="py-5 text-center mt-4" style="background-color: black;color: white;">
+        ©2022 Copyright
+      </div>
+
+      
 </body>
+</html>
 
 

@@ -1,0 +1,15 @@
+body {
+  background-image: url("/img/i-like-food.svg");
+  background-color: black;
+  color: black;
+}
+.maham
+{
+  background-image: url("/img/cb.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+

@@ -1,12 +1,32 @@
 const express = require('express')
 const Blog = require('./../models/blog')
-
-
 const router=express.Router()
+const Sequelize = require('sequelize');
+const blog = require('./../models/blog');
+const Op = Sequelize.Op;
+
+
+router.get('/latest', async (req, res) => {
+
+  const blog =await Blog.find({}).sort({_id:-1}).limit(3);
+  res.render('blogs/latest', { blog: blog })
+
+  });
+
+
+router.get('/search', (req, res) => {
+  res.render('blogs/search')
+});
+
+router.get('/home', (req, res) => {
+  res.render('blogs/home')
+});
+
+
+
 
 router.get('/new',(req,res)=>
 {
-
     res.render('blogs/new',{blog:new Blog()})
 })
 router.get('/edit/:id', async (req, res) => {
@@ -24,6 +44,9 @@ router.get('/:slug',async(req,res)=>
 
 }) 
 
+  
+ 
+
 router.post('/', async (req, res, next) => {
     req.blog = new Blog()
     next()
@@ -40,7 +63,7 @@ router.delete('/:id', async (req, res) => {
   })
 
 
-  function saveArticleAndRedirect(path) {
+function saveArticleAndRedirect(path) {
     return async (req, res) => {
       let blog = req.blog
       blog.title = req.body.title
@@ -48,7 +71,7 @@ router.delete('/:id', async (req, res) => {
       blog.img=req.body.img
       blog.category=req.body.category
       blog.description = req.body.description
-      blog.markdown = req.body.markdown
+      
       try {
         blog = await blog.save()
         res.redirect(`/blogs/${blog.slug}`)
@@ -59,4 +82,5 @@ router.delete('/:id', async (req, res) => {
   }  
 
 module.exports=router
+
 

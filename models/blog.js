@@ -25,10 +25,7 @@ const blogSchema = new mongoose.Schema({
   description: {
     type: String
   },
-  markdown: {
-    type: String,
-    required: true
-  },
+ 
   createdAt: {
     type: Date,
     default: Date.now
@@ -37,20 +34,15 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
-  },
-  sanitizedHtml: {
-    type: String,
-    required: true
   }
+ 
 })
 blogSchema.pre('validate', function(next) {
   if (this.title) {
     this.slug = slugify(this.title, { lower: true, strict: true })
   }
 
-  if (this.markdown) {
-    this.sanitizedHtml = dompurify.sanitize(marked.parse(this.markdown))
-  }
+ 
 
   next()
   })
