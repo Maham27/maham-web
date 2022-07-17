@@ -4,19 +4,53 @@
 
 </head>
 
-<body>
+<body style="background-image:url('/img/i-like-food.svg');">
     <%- include("../partials/navbar") %>
-    <div class="container">
-        <div class="maham mt-4 p-5 text-white rounded text-center";>
-            <h1 class="mb-4">COOKING BLOG</h1>
-          </div>
-        
-          
+   <div class="container">
+
       
+      <h1 class="display-4 fw-bold mb-4 mt-5">RECIPIES</h1>
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <% blog.forEach(function(blog, index){ %>
+      
+          <div class="card mt-4 text-center"  style="width:28rem;margin:10px;">
+         <div class="card-body">
+            <h4 class="card-title"><%= blog.title %></h4>
+            <h4 class="card-title"><%= blog.author %></h4>
+            <div class="card-subtitle text-muted mb-2">
+              <%= blog.createdAt.toLocaleDateString() %>
+            </div>
+            <div class="card-text mb-2"><%= blog.category %></div>
+            <img class="card-img-top mt-2" src="<%= blog.img %> " alt="" />
+            <div class="card-text mb-2"><%= blog.description %></div>
+            <a
+        href="<%= blog.slug %>"
+        class="btn btn-dark text-center"
+        >Read More....</a
+      >
+      <a href="edit/<%= blog.id %>" class="btn btn-dark"
+        >Edit</a
+      >
+      <form
+        action="/blogs/<%= blog.id %>?_method=DELETE"
+        method="POST"
+        class="d-inline">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+        </div>
+        </div>
+
+   <% }) %>
+   
       </div>
-      <div class="py-5 text-center mt-4" style="background-color: black;color: white;">
+
+   </div>
+   
+    
+    <div class="py-5 text-center mt-5" style="background-color: black;color: white;">
         ©2022 Copyright
       </div>
 
       
 </body>
+</html>

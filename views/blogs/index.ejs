@@ -22,9 +22,9 @@
                 <div class="card-subtitle text-muted mb-2">
                   <%= blog.createdAt.toLocaleDateString() %>
                 </div>
-                <div class="card-text mb-2"><%= blog.description %></div>
-                <img class="card-img-top mt-2" src="<%= blog.img %> " alt="" />
                 <div class="card-text mb-2"><%= blog.category %></div>
+                <img class="card-img-top mt-2" src="<%= blog.img %> " alt="" />
+                <div class="card-text mb-2"><%= blog.description %></div>
                 <a
             href="blogs/<%= blog.slug %>"
             class="btn btn-dark text-center"

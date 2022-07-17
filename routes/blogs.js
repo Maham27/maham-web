@@ -6,20 +6,23 @@ const blog = require('./../models/blog');
 const Op = Sequelize.Op;
 
 
-router.get('/latest', async (req, res) => {
-
-  const blog =await Blog.find({}).sort({_id:-1}).limit(3);
-  res.render('blogs/latest', { blog: blog })
-
-  });
 
 
-router.get('/search', (req, res) => {
-  res.render('blogs/search')
+router.post('/search', async(req, res) => {
+  
+    let searchTerm = req.body.searchTerm;
+    let blog = await Blog.find( { $text: { $search: searchTerm, $diacriticSensitive: true } });
+    res.render('blogs/search', {blog:blog });
+  
 });
 
-router.get('/home', (req, res) => {
-  res.render('blogs/home')
+
+
+
+
+router.get('/home',async (req, res) => {
+  const blog =await Blog.find({}).sort({_id:-1}).limit(5);
+  res.render('blogs/home', { blog: blog })
 });
 
 
@@ -48,6 +51,7 @@ router.get('/:slug',async(req,res)=>
  
 
 router.post('/', async (req, res, next) => {
+
     req.blog = new Blog()
     next()
   }, saveArticleAndRedirect('new'))

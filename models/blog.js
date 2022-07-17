@@ -46,4 +46,5 @@ blogSchema.pre('validate', function(next) {
 
   next()
   })
+  blogSchema.index({ category: 'text'});
 module.exports = mongoose.model('Blog',blogSchema)
